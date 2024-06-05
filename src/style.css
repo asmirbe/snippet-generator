@@ -1,0 +1,295 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  text-size-adjust: 100%;
+}
+
+body {
+	overflow-x: hidden;
+  font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier,
+    monospace;
+  font-family: "Fira Code", monospace;
+  font-size: 16px;
+  line-height: 28px;
+}
+
+/* app */
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  min-height: 100dvh;
+  padding: 14px;
+  transition: background-color 120ms;
+  gap: 14px;
+
+  @media screen and (min-width: 960px) {
+    padding: 28px;
+    gap: 28px;
+  }
+}
+
+.app--vscode {
+  background-color: #075688;
+}
+
+.app__header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1440px;
+  color: #fff;
+  text-align: center;
+
+  @media screen and (min-width: 960px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.app__title {
+  position: relative;
+  font-size: 16px;
+}
+
+.app__title::before {
+  content: "${1:";
+  opacity: 0.5;
+}
+
+.app__title::after {
+  content: "}";
+  opacity: 0.5;
+}
+
+.app__subtitle {
+  font-size: 14px;
+}
+
+.app__link {
+  color: inherit;
+}
+
+.app__main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 6px;
+  width: 100%;
+  max-width: 1440px;
+
+  @media screen and (min-width: 960px) {
+    flex-direction: row;
+  }
+}
+
+.app__half {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.75);
+  overflow: hidden;
+  gap: 4px;
+  padding: 4px;
+
+  @media screen and (min-width: 960px) {
+    flex-basis: 50%;
+  }
+}
+
+.app__halftop {
+  display: flex;
+  gap: 4px;
+  flex-basis: 60px;
+  flex-shrink: 0;
+}
+
+.app__input {
+  flex: 1;
+  width: 100%;
+  padding: 0 16px;
+  transition: box-shadow 120ms;
+  border: 0;
+  border-radius: 3px;
+  outline: none;
+  background-color: #fff;
+  font: inherit;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.25);
+		appearance: none;
+}
+.app__input[type="select"] {
+		width: auto;
+		margin-right: 8px;
+}
+
+.app--vscode .app__input:focus {
+  box-shadow: inset 0 0 0 2px #075688;
+}
+
+.app--sublimetext .app__input:focus {
+  box-shadow: inset 0 0 0 2px #4b4b4b;
+}
+
+.app--atom .app__input:focus {
+  box-shadow: inset 0 0 0 2px #367d5b;
+}
+
+.app__halfbottom {
+  display: flex;
+  position: relative;
+  flex: 1;
+  min-height: 160px;
+  overflow: hidden;
+}
+
+.app__textarea {
+  display: flex;
+  flex: 1;
+  padding: 16px;
+  transition: box-shadow 120ms;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  background-color: #fff;
+  font: inherit;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.25);
+  resize: none;
+}
+
+.app--vscode .app__textarea:focus {
+  box-shadow: inset 0 0 0 2px #075688;
+}
+
+.app--sublimetext .app__textarea:focus {
+  box-shadow: inset 0 0 0 2px #4b4b4b;
+}
+
+.app--atom .app__textarea:focus {
+  box-shadow: inset 0 0 0 2px #367d5b;
+}
+
+.app__info {
+  display: none;
+  position: absolute;
+  right: 12px;
+  bottom: 6px;
+  font-size: 12px;
+
+  @media screen and (min-width: 960px) {
+    display: block;
+  }
+}
+
+.app__infoselect {
+  transition: color 120ms;
+  /* stylelint-disable */
+  -moz-user-select: all;
+  -ms-user-select: all;
+  -webkit-user-select: all;
+  /* stylelint-enable */
+  user-select: all;
+}
+
+.app--vscode .app__infolink {
+  color: #075688;
+}
+
+.app--sublimetext .app__infolink {
+  color: #4b4b4b;
+}
+
+.app--atom .app__infolink {
+  color: #367d5b;
+}
+
+/* btn */
+
+.app__button {
+  flex: 1;
+  transition: background-color 120ms;
+  border: 0;
+  border-radius: 3px;
+  outline: 0;
+  background-color: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  font: inherit;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.app__button--vscode.app__button--active {
+  background-color: #075688;
+}
+
+.app__button--sublimetext.app__button--active {
+  background-color: #4b4b4b;
+}
+
+.app__button--atom.app__button--active {
+  background-color: #367d5b;
+}
+
+.app__pre {
+  flex: 1;
+  padding: 16px;
+  border: none;
+  border-radius: 3px;
+  background-color: #fff;
+  font: inherit;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.25);
+  overflow: auto;
+  resize: none;
+  /* stylelint-disable */
+  -moz-user-select: all;
+  -ms-user-select: all;
+  -webkit-user-select: all;
+  /* stylelint-enable */
+  user-select: all;
+}
+
+.app__btn {
+  padding: 0 24px;
+  border: 0;
+  border-radius: 3px;
+  color: #fff;
+  font: inherit;
+  font-size: 15px;
+  line-height: 48px;
+  cursor: pointer;
+}
+
+.app--vscode .app__btn {
+  background-color: #075688;
+}
+
+.app--sublimetext .app__btn {
+  background-color: #4b4b4b;
+}
+
+.app--atom .app__btn {
+  background-color: #367d5b;
+}
+
+.app__buttons {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+}
+
+.app__prettier {
+	color: #fff;
+	max-width: max-content;
+	background-color: #075688;
+	cursor: pointer;
+}
+.app__prettier:hover, .app__btncopy:hover {
+	background-color: #0a6aa1;
+}
